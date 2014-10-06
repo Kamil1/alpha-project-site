@@ -1,0 +1,125 @@
+$blue: #06627f;
+
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,700);
+h1, h2, h3, h4 {
+  font-family: 'Roboto Slab';
+  font-weight: 400;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Open Sans';
+}
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+.nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 50px;
+  text-align: center;
+  font-size: 12pt;
+  font-weight: 100;
+  line-height: 50px;
+  border-bottom: 1px solid #ccc;
+  @include prefix(animation, slidein 2.5s);
+  background-color: $blue;
+  color: white;
+  a {
+    display: inline-block;
+    padding: 0 20px;
+    height: 50px;
+    color: inherit;
+    &:hover {
+      opacity: 0.8;
+      background-color: rgba(255,255,255,0.3);
+      text-decoration: none;
+    }
+  }
+}
+.jumbotron {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding: 0 5%;
+  justify-content: space-around;
+
+  img {
+    border: 1px solid #ccc;
+    height: 75%;
+  }
+  div {
+    max-width: 640px;
+    max-height: 75%;
+  }
+  div, img {
+    align-self: center;
+    margin: 10px;
+  }
+  @include prefix(animation, fadein 2.5s);
+}
+
+.btn {
+  background-color: #eee;
+  color: black;
+  padding: 10px 15px;
+  border-bottom: 4px solid #ccc;
+  text-decoration: none;
+  &:hover {
+    position: relative;
+    top: 2px;
+    text-decoration: none;
+    border-bottom-width: 2px;
+  }
+  &:active {
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    text-decoration: none;
+    border-bottom-width: 0;
+  }
+  &.btn-primary {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    margin: 0 auto;
+  }
+}
+
+
+@include keyframes-mixin(fadein) {
+  0% {
+    width: 200%;
+  }
+  9% {
+    width: 200%;
+  }
+  80% {
+    width: 100%;
+  }
+  100% {
+  }
+}
+
+@include keyframes-mixin(slidein) {
+  0% {
+    background-color: transparent;
+    border-color: transparent;
+    color: rgba(0,0,0,0.1);
+  }
+  80% {
+    background-color: transparent;
+    border-color: transparent;
+    color: rgba(0,0,0,0.3);
+  }
+  100% {
+    background-color: $blue;
+    border-color: #ccc;
+    color: white;
+  }
+}
