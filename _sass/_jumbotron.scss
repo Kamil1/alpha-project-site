@@ -27,10 +27,11 @@ html {
   font-size: 12pt;
   font-weight: 100;
   line-height: 50px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid fade-out($blue, 0.5);
   @include prefix(animation, slidein 2.5s);
   background-color: $blue;
   color: white;
+  z-index: 2;
   a {
     display: inline-block;
     padding: 0 20px;
@@ -43,6 +44,18 @@ html {
     }
   }
 }
+.corner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1000px 0 0 1000px;
+  border-color: transparent transparent transparent fade-out($blue, 0.5);
+  z-index: 0;
+  @include prefix(animation, fadeincorner 2.5s);
+}
 .jumbotron {
   height: 100%;
   width: 100%;
@@ -51,7 +64,7 @@ html {
   justify-content: space-around;
 
   img {
-    border: 1px solid #ccc;
+    background-color: white;
     height: 75%;
   }
   div {
@@ -59,6 +72,7 @@ html {
     max-height: 75%;
   }
   div, img {
+    z-index: 1;
     align-self: center;
     margin: 10px;
   }
@@ -96,7 +110,7 @@ html {
   0% {
     width: 200%;
   }
-  9% {
+  15% {
     width: 200%;
   }
   80% {
@@ -119,7 +133,18 @@ html {
   }
   100% {
     background-color: $blue;
-    border-color: #ccc;
+    border-color: fade-out($blue, 0.5);
     color: white;
+  }
+}
+@include keyframes-mixin(fadeincorner) {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
   }
 }
